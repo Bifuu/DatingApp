@@ -84,7 +84,8 @@ namespace DatingApp.API.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             // Return OK and the JWT Token to the user
-            return Ok(new {
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
             });
         }
