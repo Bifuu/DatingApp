@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/_models/user';
+import { UserService } from 'src/app/_services/user.service';
+import { AlertifyService } from 'src/app/_services/alertify.service';
+import { TouchSequence } from 'selenium-webdriver';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-member-detail',
@@ -6,10 +11,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
+  user: User;
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private alertify: AlertifyService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this.loadUser();
   }
 
+  loadUser() {
+    this.userService.getUser(+this.route.snapshot.params['id']).subscribe(
+      (user: User) => {
+        this.user = user;
+      },
+      error => {
+        this.alertify.error(error);
+      }
+    );
+  }
 }
