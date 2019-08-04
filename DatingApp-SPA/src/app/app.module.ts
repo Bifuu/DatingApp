@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, FormControlDirective } from '@angular/forms';
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { GalleryModule } from '@ngx-gallery/core';
 
@@ -59,6 +60,7 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:5000/api/auth']
       }
     }),
+    BrowserAnimationsModule,
     GalleryModule.withConfig({ loadingMode: 'indeterminate' })
   ],
   providers: [
