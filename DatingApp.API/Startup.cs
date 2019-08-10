@@ -45,6 +45,7 @@ namespace DatingApp.API
             services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
+            services.AddScoped<LogUserActivity>();
 
             // Should pull data from user-secrets
             services.Configure<CloudinarySettings>(Configuration.GetSection("cloudinary"));
